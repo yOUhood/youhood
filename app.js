@@ -3,15 +3,17 @@ const app = express();
 const hbs = require("hbs");
 const path = require("path");
 
-
 /** View engine setup */
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
-require('./config/hbs.config');
+require("./config/hbs.config");
 
 /** Router setup */
 const routes = require("./config/routes.config");
-app.use('/', routes);
+app.use("/", routes);
+
+/** Configurations */
+require("./config/db.config");
 
 const port = Number(process.env.PORT || 3000);
 
