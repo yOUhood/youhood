@@ -1,0 +1,33 @@
+body {
+    font-family: 'Cardo', serif;
+    background-color: #484d5c;
+    color: #c0ccd4;
+   }
+   
+   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    color: #ffce00;
+   }
+ .formInput, .formInput:focus  {
+     background-color:#c0ccd4;
+     color: #484d5c;
+     border-bottom: solid 2px #ffce00;
+ }
+
+.btn {
+background-color: #ffce00;
+border:none;
+color: #484d5c;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+}
+.navbar {
+    background-color: #c0ccd4 !important;
+}
+.nav-link, .navbar-brand{
+    color: #484d5c !important;
+}

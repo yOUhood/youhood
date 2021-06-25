@@ -8,6 +8,10 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 require("./config/hbs.config");
 
+/** Middlewares */
+app.use(express.urlencoded({extended:false}));
+app.use(express.static(`${__dirname}/public`))
+
 /** Router setup */
 const routes = require("./config/routes.config");
 app.use("/", routes);
