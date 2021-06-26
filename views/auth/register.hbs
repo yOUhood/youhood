@@ -12,28 +12,32 @@
 
     <div class="mb-3 col-4">
       <label for="exampleInputLastName" class="form-label">Last name</label>
-      <input type="text" name="lastName" class="form-control formInput" aria-describedby="nameHelp">
+      <input type="text" name="lastName" class="form-control formInput {{#if errors.lastName}}is-invalid{{/if}}" aria-describedby="nameHelp" value="{{user.lastName}}">
+      {{#if errors.lastName}}<div class="invalid-feedback">{{errors.lastName}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-8">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" name="email" class="form-control formInput" aria-describedby="emailHelp">
+      <input type="email" name="email" class="form-control formInput {{#if errors.email}}is-invalid{{/if}}" aria-describedby="emailHelp" value="{{user.email}}">
+      {{#if errors.email}}<div class="invalid-feedback">{{errors.email}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-8">
       <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" name="password" class="form-control formInput">
+      <input type="password" name="password" class="form-control formInput {{#if errors.password}}is-invalid{{/if}}" value="{{user.password}}">
+      {{#if errors.password}}<div class="invalid-feedback">{{errors.password}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-8">
       <label for="exampleInputPhone" class="form-label">Phone</label>
-      <input type="text" name="phone" class="form-control formInput" aria-describedby="phoneHelp">
+      <input type="text" name="phone" class="form-control formInput {{#if errors.phone}}is-invalid{{/if}}" aria-describedby="phoneHelp" value="{{user.phone}}">
+      {{#if errors.phone}}<div class="invalid-feedback">{{errors.phone}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-8">
       <label class="visually-hidden" for="autoSizingSelect" aria-describedby="Team">Team</label>
       <select class="form-select formInput" name="team" id="autoSizingSelect">
-        <option selected> Choose the team</option>
+        <option value="null" selected> Choose the team</option>
         <option value="Operations">Operations</option>
         <option value="Technical Support">Technical Support</option>
         <option value="Sales Manager">Sales Manager</option>

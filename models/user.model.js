@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const teams = require("../data/teams.json");
 
 EMAIL_PATTERN =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -27,15 +28,22 @@ const userSchema = new Schema({
     match: [PASSWORD_PATTERN, "password needs at least 7 characters"],
   },
   phone: {
-    type: Number,
+    type: String,
+    required: "phone is required",
     match: [PHONE_PATTERN, "phone number is not valid"],
   },
   position: {
     type: String,
   },
   team: {
-    type: String,
-    required: "select a team",
+    type: [
+      {
+        type: String,
+        required: "select a team",
+        enum: team,
+      },
+    ],
+    default: [],
   },
   office: {
     type: String,
@@ -44,7 +52,7 @@ const userSchema = new Schema({
   role: {
     type: String,
     default: "user",
-    enum: ["admin", "user"]
+    enum: ["admin", "user"],
   },
   startDate: {
     type: Date,
@@ -54,6 +62,6 @@ const userSchema = new Schema({
   },
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
