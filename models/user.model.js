@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 EMAIL_PATTERN =
@@ -41,9 +41,10 @@ const userSchema = new Schema({
     type: String,
     required: "select location",
   },
-  admin: {
-    type: Boolean,
-    default: false,
+  role: {
+    type: String,
+    default: "user",
+    enum: ["admin", "user"]
   },
   startDate: {
     type: Date,
@@ -52,3 +53,7 @@ const userSchema = new Schema({
     type: String,
   },
 });
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
