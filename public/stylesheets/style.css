@@ -7,18 +7,19 @@ body {
     margin:0;
     display:flex;
     flex-direction: column;
-   }
-   
-   h1, h2, h3, h4, h5, h6 {
+}
+
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     color: #ffce00;
-   }
- .formInput, .formInput:focus {
-     background-color:#c0ccd4;
-     color: #484d5c;
-     border-bottom: solid 2px #ffce00;
- }
+}
+
+.formInput, .formInput:focus {
+    background-color:#c0ccd4;
+    color: #484d5c;
+    border-bottom: solid 2px #ffce00;
+}
 
 .btn {
 background-color: #ffce00;
