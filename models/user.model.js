@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const teams = require("../data/teams.json");
+const offices = require("../data/offices.json");
 
 EMAIL_PATTERN =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -40,14 +41,20 @@ const userSchema = new Schema({
       {
         type: String,
         required: "select a team",
-        enum: team,
+        enum: teams,
       },
     ],
     default: [],
   },
   office: {
-    type: String,
-    required: "select location",
+    type: [
+      {
+        type: String,
+        required: "select an office",
+        enum: offices,
+      },
+    ],
+    default: [],
   },
   role: {
     type: String,
