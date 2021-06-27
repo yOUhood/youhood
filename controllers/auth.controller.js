@@ -6,8 +6,8 @@ const offices = require("../data/offices.json");
 
 module.exports.register = (req, res, next) => {
   res.render("auth/register", {
-    team: teams,
-    office: offices,
+    teams,
+    offices,
   });
 };
 
@@ -17,8 +17,8 @@ module.exports.doRegister = (req, res, next) => {
     res.render("auth/register", {
       user: req.body,
       errors: errors,
-      team: teams,
-      office: offices,
+      teams,
+      offices,
     });
   }
 
