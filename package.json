@@ -20,10 +20,12 @@
   "homepage": "https://github.com/yOUhood/youhood#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "hbs": "^4.1.2",
     "mongoose": "^5.12.14",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.6.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

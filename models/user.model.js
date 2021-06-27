@@ -40,8 +40,8 @@ const userSchema = new Schema({
     type: [
       {
         type: String,
-        required: "select a team",
-        enum: teams,
+/*         required: "select a team",
+ */        enum: teams,
       },
     ],
     default: [],
@@ -50,8 +50,8 @@ const userSchema = new Schema({
     type: [
       {
         type: String,
-        required: "select an office",
-        enum: offices,
+/*         required: "select an office",
+ */        enum: offices,
       },
     ],
     default: [],

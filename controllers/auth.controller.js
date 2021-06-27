@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("../models/user.model");
+const mailer = require("../config/mailer.config")
 const teams = require("../data/teams.json");
 const offices = require("../data/offices.json");
 
@@ -30,7 +31,8 @@ module.exports.doRegister = (req, res, next) => {
           req.body;
       }
       return User.create(user).then((user) => {
-        console.log("entro");
+        mailer.sendValidationEmail(user);
+        res.redirect('/');
       });
     })
     .catch((error) => {
