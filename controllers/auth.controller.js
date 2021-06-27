@@ -12,7 +12,6 @@ module.exports.register = (req, res, next) => {
 };
 
 module.exports.doRegister = (req, res, next) => {
-  console.log("entro1");
   function renderWithErrors(errors) {
     res.render("auth/register", {
       user: req.body,

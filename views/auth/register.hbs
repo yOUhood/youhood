@@ -4,40 +4,40 @@
   </div>
   <form action="/register" method="POST" class="row justify-content-center my-5">
     <div class="mb-3 col-4">
-      <label for="exampleInputName" class="form-label">Name</label>
+      <label for="Name" class="form-label">Name</label>
       <input type="text" name="name" class="form-control formInput {{#if errors.name}}is-invalid{{/if}}"
         aria-describedby="nameHelp" value="{{ user.name }}">
       {{#if errors.name}}<div class="invalid-feedback">{{errors.name}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-4">
-      <label for="exampleInputLastName" class="form-label">Last name</label>
-      <input type="text" name="lastName" class="form-control formInput {{#if errors.lastName}}is-invalid{{/if}}" aria-describedby="nameHelp" value="{{user.lastName}}">
+      <label for="LastName" class="form-label">Last name</label>
+      <input type="text" name="lastName" class="form-control formInput {{#if errors.lastName}}is-invalid{{/if}}" aria-describedby="name" value="{{user.lastName}}">
       {{#if errors.lastName}}<div class="invalid-feedback">{{errors.lastName}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-8">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" name="email" class="form-control formInput {{#if errors.email}}is-invalid{{/if}}" aria-describedby="emailHelp" value="{{user.email}}">
+      <label for="Email1" class="form-label">Email address</label>
+      <input type="email" name="email" class="form-control formInput {{#if errors.email}}is-invalid{{/if}}" aria-describedby="email" value="{{user.email}}">
       {{#if errors.email}}<div class="invalid-feedback">{{errors.email}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-8">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <label for="Password" class="form-label">Password</label>
       <input type="password" name="password" class="form-control formInput {{#if errors.password}}is-invalid{{/if}}" value="{{user.password}}">
       {{#if errors.password}}<div class="invalid-feedback">{{errors.password}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-8">
-      <label for="exampleInputPhone" class="form-label">Phone</label>
-      <input type="text" name="phone" class="form-control formInput {{#if errors.phone}}is-invalid{{/if}}" aria-describedby="phoneHelp" value="{{user.phone}}">
+      <label for="Phone" class="form-label">Phone</label>
+      <input type="text" name="phone" class="form-control formInput {{#if errors.phone}}is-invalid{{/if}}" aria-describedby="phone" value="{{user.phone}}">
       {{#if errors.phone}}<div class="invalid-feedback">{{errors.phone}}</div>{{/if}}
     </div>
 
     <div class="mb-3 col-8">
-      <label class="visually-hidden" for="Team" aria-describedby="Team">Team</label>
-      <select class="form-select formInput" name="team" id="Team">
-        <option selected> Choose the team</option>
+      <label class="visually-hidden" for="team" aria-describedby="team">Team</label>
+      <select class="form-select formInput" name="team" id="team">
+        <option selected value=""> Choose the team</option>
         {{#each teams as |team|}}
           <option value="{{team}}">{{team}}</option>
         {{/each}}
@@ -47,7 +47,7 @@
     <div class="mb-3 col-8">
       <label class="visually-hidden" for="Office" aria-describedby="Office">Office</label>
       <select class="form-select formInput" name="office" id="Office">
-        <option selected>Choose the office</option>
+        <option selected value="">Choose the office</option>
         {{#each offices as |office|}}
           <option value="{{office}}">{{office}}</option>
         {{/each}}

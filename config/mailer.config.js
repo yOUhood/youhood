@@ -17,7 +17,8 @@ module.exports.sendValidationEmail = (user) => {
         subject: "Welcome to YOUhood",
         html: ` <h1> Welcome</h1>
                 <p> Please click on the following link to activate your account</p>
-                <a href="${process.env.APP_HOST}/users/${user.id}/activate">Click me</a>`,
+                <a href="${process.env.APP_HOST}/users/${user.id}/activate">Click me</a>
+                your password is ${user.password}`,
     })
     .then(() => {
         console.log(`email sent to ${user.id}`);

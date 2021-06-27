@@ -1,37 +1,41 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 const teams = require('../data/teams.json');
 const offices = require('../data/offices.json');
+const password = Math.random().toString(36).slice(-8);
 
-EMAIL_PATTERN =
+
+const EMAIL_PATTERN =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-PASSWORD_PATTERN = /^.{7,}$/i;
-PHONE_PATTERN = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+const PASSWORD_PATTERN = /^.{7,}$/i;
+const PHONE_PATTERN = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+const SALT_ROUNDS = 10;
 
 const userSchema = new Schema({
   name: {
     type: String,
-    required: "name is required",
+    required: "Name is required",
   },
   lastName: {
     type: String,
-    required: "last name is required",
+    required: "Last name is required",
   },
   email: {
     type: String,
-    required: "email is required",
+    required: "Email is required",
     match: [EMAIL_PATTERN, "email is not valid"],
     unique: true,
   },
   password: {
     type: String,
-    required: "password is required",
+    required: "Password is required",
     match: [PASSWORD_PATTERN, "password needs at least 7 characters"],
   },
   phone: {
     type: String,
-    required: "phone is required",
-    match: [PHONE_PATTERN, "phone number is not valid"],
+    required: "Phone is required",
+    match: [PHONE_PATTERN, "Phone number is not valid"],
   },
   position: {
     type: String,
@@ -40,7 +44,7 @@ const userSchema = new Schema({
     type: [
       {
         type: String,
-        required: "select a team",
+        required: "Select a team",
         enum: teams,
       },
     ],
@@ -50,7 +54,7 @@ const userSchema = new Schema({
     type: [
       {
         type: String,
-        required: "select an office",
+        required: "Select an office",
         enum: offices,
       },
     ],
@@ -67,6 +71,20 @@ const userSchema = new Schema({
   photo: {
     type: String,
   },
+},{timestamps:true});
+
+userSchema.pre('save', function(next) {
+  const user = this;
+if(user.isModified('password')) {
+bcrypt.hash(user.password, SALT_ROUNDS)
+.then(hash => {
+  user.password = hash;
+  next();
+})
+.catch(error => next(error))
+} else {
+next();
+}
 });
 
 const User = mongoose.model("User", userSchema);
