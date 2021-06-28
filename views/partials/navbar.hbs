@@ -7,6 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="/register">Register</a>
+        {{#if currentUser }}
+        <a class="nav-link active" aria-current="page" href="/profile">{{currentUser.name}} {{currentUser.lastName}}</a>
+        {{/if}}
       </div>
     </div>
   </div>

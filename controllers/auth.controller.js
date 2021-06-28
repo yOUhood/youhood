@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("../models/user.model");
-const mailer = require("../config/mailer.config")
+const mailer = require("../config/mailer.config");
 const teams = require("../data/teams.json");
 const offices = require("../data/offices.json");
 
@@ -31,7 +31,7 @@ module.exports.doRegister = (req, res, next) => {
       }
       return User.create(user).then((user) => {
         mailer.sendValidationEmail(user);
-        res.redirect('/');
+        res.redirect("/");
       });
     })
     .catch((error) => {
@@ -44,10 +44,34 @@ module.exports.doRegister = (req, res, next) => {
     });
 };
 
-module.exports.login = (req,res,next) => {
-  res.render('auth/login');
-}
+module.exports.login = (req, res, next) => {
+  res.render("auth/login");
+};
 
-module.exports.doLogin = (req,res,next) => {
-  red.redirect('/')
-}
+module.exports.doLogin = (req, res, next) => {
+  function renderWithLoginError() {
+    res.render("auth/login", {
+      user: req.body,
+      errors: {
+        email: "Invalid user or password",
+      },
+    });
+  }
+
+  User.findOne({ email: req.body.email })
+    .then((user) => {
+      if (!user) {
+        renderWithLoginError();
+      } else {
+        return user.checkPassword(req.body.password).then((match) => {
+          if (!match) {
+            renderWithLoginError();
+          } else {
+            req.session.userId = user.id;
+            res.redirect("/");
+          }
+        });
+      }
+    })
+    .catch((error) => next(error));
+};
