@@ -26,13 +26,18 @@ module.exports.doRegister = (req, res, next) => {
       if (user) {
         renderWithErrors({ email: "email already registered." });
       } else {
-        user = { name, lastName, email, password, phone, team, office, admin } =
+        user = { name, lastName, email, phone, team, office, admin } =
           req.body;
+
+        const password = Math.random().toString(36).slice(-8);
+        user.password = password;
+
+        return User.create(user)
+          .then((user) => {
+            mailer.sendWelcomeEmail(user, password);
+            res.redirect("/");
+          });
       }
-      return User.create(user).then((user) => {
-        mailer.sendValidationEmail(user);
-        res.redirect("/");
-      });
     })
     .catch((error) => {
       console.log(error);
@@ -68,10 +73,15 @@ module.exports.doLogin = (req, res, next) => {
             renderWithLoginError();
           } else {
             req.session.userId = user.id;
-            res.redirect("/");
+            res.redirect("/login");
           }
         });
       }
     })
     .catch((error) => next(error));
+};
+
+module.exports.logout = (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/login');
 };

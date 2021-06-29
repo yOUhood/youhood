@@ -10,15 +10,15 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-module.exports.sendValidationEmail = (user) => {
+module.exports.sendWelcomeEmail = (user, password) => {
     transporter.sendMail({
         from: `"yOUhood" <${email}>`,
         to: user.email, 
         subject: "Welcome to YOUhood",
         html: ` <h1> Welcome</h1>
-                <p> Please click on the following link to activate your account</p>
-                <a href="${process.env.APP_HOST}/users/${user.id}/activate">Click me</a>
-                your password is ${user.password}`,
+                <p> Welcome to youhood, please click on the following link to access the page</p>
+                <a href="${process.env.APP_HOST}/login">Click me</a>
+                your email is ${user.email} and password is ${password}`,
     })
     .then(() => {
         console.log(`email sent to ${user.id}`);

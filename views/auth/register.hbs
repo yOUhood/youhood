@@ -23,12 +23,6 @@
     </div>
 
     <div class="mb-3 col-8">
-      <label for="Password" class="form-label">Password</label>
-      <input type="password" name="password" class="form-control formInput {{#if errors.password}}is-invalid{{/if}}" value="{{user.password}}">
-      {{#if errors.password}}<div class="invalid-feedback">{{errors.password}}</div>{{/if}}
-    </div>
-
-    <div class="mb-3 col-8">
       <label for="Phone" class="form-label">Phone</label>
       <input type="text" name="phone" class="form-control formInput {{#if errors.phone}}is-invalid{{/if}}" aria-describedby="phone" value="{{user.phone}}">
       {{#if errors.phone}}<div class="invalid-feedback">{{errors.phone}}</div>{{/if}}
@@ -46,12 +40,14 @@
 
     <div class="mb-3 col-8">
       <label class="visually-hidden" for="Office" aria-describedby="Office">Office</label>
-      <select class="form-select formInput" name="office" id="Office">
+      <select class="form-select formInput {{#if errors.office}}is-invalid{{/if}}" name="office" id="Office">
         <option selected value="">Choose the office</option>
         {{#each offices as |office|}}
           <option value="{{office}}">{{office}}</option>
         {{/each}}
       </select>
+        {{#if errors.office}}<div class="invalid-feedback">{{errors.office}}</div>{{/if}}
+
     </div>
 
 <div class="mb-3 col-8">

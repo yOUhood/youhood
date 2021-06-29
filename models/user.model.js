@@ -3,13 +3,10 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 const teams = require("../data/teams.json");
 const offices = require("../data/offices.json");
-const password = Math.random().toString(36).slice(-8);
 
 const EMAIL_PATTERN =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const PASSWORD_PATTERN = /^.{7,}$/i;
-const PHONE_PATTERN =
-  /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 const SALT_ROUNDS = 10;
 
 const userSchema = new Schema(
@@ -36,30 +33,19 @@ const userSchema = new Schema(
     phone: {
       type: String,
       required: "Phone is required",
-      match: [PHONE_PATTERN, "Phone number is not valid"],
     },
     position: {
       type: String,
     },
     team: {
-      type: [
-        {
-          type: String,
-          required: "Select a team",
-          enum: teams,
-        },
-      ],
-      default: [],
+      type: String,
+      required: "Select a team",
+      enum: teams,
     },
     office: {
-      type: [
-        {
-          type: String,
-          required: "Select an office",
-          enum: offices,
-        },
-      ],
-      default: [],
+      type: String,
+      required: "Select an office",
+      enum: offices,
     },
     role: {
       type: String,

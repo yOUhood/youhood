@@ -6,12 +6,12 @@ const User = require("../models/user.model");
 const sessionMaxAge = Number(process.env.SESSION_MAX_AGE || 7);
 
 module.exports.sessionConfig = expressSession({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || "supersecret",
   resave: false,
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: process.env.SESSION_SECURE || false,
+    secure: process.env.SESSION_SECURE === "true",
     maxAge: 24 * 3600 * 1000 * sessionMaxAge,
   },
   store: MongoStore.create({

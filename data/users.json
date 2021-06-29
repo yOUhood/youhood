@@ -1,0 +1,24 @@
+[
+    {
+        "role": "admin",
+        "email": "loquesea@cosa.com",
+        "password": "admin212121",
+        "team": "Technical Support",
+        "office": "Barcelona"
+    },
+    {
+        "team": "Operations",
+        "role": "user",
+        "office": "London"
+    },
+    {
+        "role": "user",
+        "team": "Sales Manager",
+        "office": "Münich"
+    },
+    {
+        "role": "user",
+        "team": "Account Manager",
+        "office": "Amsterdam"
+    }
+]
