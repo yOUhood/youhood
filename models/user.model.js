@@ -49,8 +49,8 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      default: "user",
-      enum: ["admin", "user"],
+      default: "explorer",
+      enum: ["admin", "explorer"],
     },
     startDate: {
       type: Date,

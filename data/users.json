@@ -8,16 +8,16 @@
     },
     {
         "team": "Operations",
-        "role": "user",
+        "role": "explorer",
         "office": "London"
     },
     {
-        "role": "user",
+        "role": "explorer",
         "team": "Sales Manager",
         "office": "Münich"
     },
     {
-        "role": "user",
+        "role": "explorer",
         "team": "Account Manager",
         "office": "Amsterdam"
     }
