@@ -1,16 +1,17 @@
 const User = require("../models/user.model");
+const createError = require("http-errors");
 
 module.exports.isAuthenticated = (req, res, next) => {
   if (req.user) {
     next();
   } else {
-    res.redirect("/login");
+    res.redirect("/");
   }
 };
 
 module.exports.isNotAuthenticated = (req, res, next) => {
   if (req.user) {
-    res.redirect("/");
+    res.redirect("/login");
   } else {
     next();
   }
