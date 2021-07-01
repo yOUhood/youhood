@@ -5,31 +5,22 @@ module.exports.isAuthenticated = (req, res, next) => {
   if (req.user) {
     next();
   } else {
-    res.redirect("/");
+    res.redirect("/login");
   }
 };
 
 module.exports.isNotAuthenticated = (req, res, next) => {
-  if (req.user) {
-    res.redirect("/login");
+  if (!req.user) {
+    next()
   } else {
-    next();
+    res.redirect("/users");
   }
 };
 
 module.exports.administrator = (req, res, next) => {
-  User.findById(req.params.id)
-    .then((user) => {
-      if (user) {
-        if (user.admin == req.user.id) {
-          req.user = user;
-          next();
-        } else {
-          next(createError(403));
-        }
-      } else {
-        next(createError(404));
-      }
-    })
-    .catch(next);
+  if (req.user.role === 'admin') {
+    next()
+  } else {
+    res.redirect("/")
+  }
 };

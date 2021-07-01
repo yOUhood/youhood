@@ -14,23 +14,22 @@ mongoose.connection.once('open', () => {
     .dropDatabase()
     .then(()=> console.log(`-Database dropped`))
     .then(() => {
-        console.log('entro')
-        users.forEach((user) => {
+        return Promise.all(users.map((user) => {
             const newUser = {
                 role: user.role,
                 email: user.email ? user.email : faker.internet.email(),
                 name: faker.name.firstName(),
                 lastName: faker.name.lastName(),
-                password: faker.internet.password(),
+                password: user.password ? user.password : faker.internet.password(),
                 startDate: faker.date.past(),
                 office: user.office,
                 team: user.team,
                 phone: faker.phone.phoneNumber()
             }
-            new User(newUser)
+            return new User(newUser)
             .save()
-        })
+        }))
     })
+    .then(() => process.exit(0))
     .catch((error) => console.log(error))
-    // .then(() => process.exit(0));
 });

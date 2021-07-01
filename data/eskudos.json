@@ -1,0 +1,22 @@
+{
+    "thankyou": {
+        "text": "Thank you", 
+        "image": ""
+    },
+    "hero": {
+        "text": "Hero",
+        "image": ""
+    },
+    "teamplayer": {
+        "text": "Team Player",
+        "image": ""
+    },
+    "bold": {
+        "text": "Bold",
+        "image": ""
+    },
+    "trusted": {
+        "text": "Trusted",
+        "image": ""
+    }
+}
