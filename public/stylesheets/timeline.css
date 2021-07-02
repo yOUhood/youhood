@@ -108,12 +108,12 @@ main h1, h2, h3, h4, h5, h6 {
 
 .card1 .s-nav>li>a.active {
     text-decoration: none;
-    background-color: #3afe;
+    background-color: #ffce00;
     color: #484d5c;
 }
 
 .text-blue {
-    color: #3afe;
+    color: #ffce00;
 }
 
 ul.friend-list {
@@ -178,7 +178,7 @@ ul.friend-list .right p {
 }
 
 .info-card1 i {
-    color: #3afe;
+    color: #ffce00;
 }
 
 .card1-one {
@@ -192,7 +192,7 @@ ul.friend-list .right p {
     position: relative;
     width: 100%;
     height: 60px;
-    background-color: #3afe;
+    background-color: #ffce00;
 }
 
 .card1-one .header::before,
@@ -330,7 +330,7 @@ ul.friend-list .right p {
 .card1-one .footer {
     position: relative;
     padding: 1rem;
-    background-color: #3afe;
+    background-color: #ffce00;
     text-align: center;
 }
 
@@ -351,7 +351,7 @@ ul.friend-list .right p {
     left: 50%;
     margin-left: -15px;
     border: 15px solid transparent;
-    border-bottom-color: #3afe;
+    border-bottom-color: #ffce00;
 }
 
 .card1-title, .card1 .card1-title, .card1-2 .card1-title {
