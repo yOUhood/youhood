@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const eskudos = require("../data/eskudos.json")
 
 
 const kudosSchema = new Schema(

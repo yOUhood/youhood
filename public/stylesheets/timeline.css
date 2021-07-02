@@ -1,8 +1,15 @@
+main {
+    background-color: #c0ccd4;
+    color: black;
+}
+main h1, h2, h3, h4, h5, h6 {
+    color: #484d5c !important;
+}
 /*social */
 .card1-one {
     position: relative;
     width: 300px;
-    background: #fff;
+    background: #c0ccd4;
     box-shadow: 0 10px 7px -5px rgba(0, 0, 0, 0.4);
 }
 .card1 {
@@ -20,11 +27,11 @@
 }
 
 .social-profile {
-    color: #fff;
+    color: #c0ccd4;
 }
 
 .social-profile a {
-    color: #fff;
+    color: #c0ccd4;
 }
 
 .social-profile {
@@ -62,7 +69,7 @@
     height: 150px;
     border-radius: 50%;
     margin-bottom: 20px;
-    border: 5px solid #fff;
+    border: 5px solid #c0ccd4;
     /*border: 10px solid #70b5e6ee;*/
 }
 
@@ -102,7 +109,7 @@
 .card1 .s-nav>li>a.active {
     text-decoration: none;
     background-color: #3afe;
-    color: #fff;
+    color: #484d5c;
 }
 
 .text-blue {
