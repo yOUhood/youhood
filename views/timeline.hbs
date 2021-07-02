@@ -5,10 +5,20 @@
             <div class="card1-body">
                 <div class="wrapper">
                     <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="user-profile">
-                    <h3>Jane Smith</h3>
-                    <p>Web Developer</p>
+                    <h3>{{currentUser.name}} {{currentUser.lastName}}</h3>
+                    <p>{{currentUser.team}}</p>
                 </div>
-                <div class="row ">
+
+                <div class="form-group mb-1">
+                    <select class="form-select" name="eskudos" show-labels multiple aria-label="Eskudos" id="eskudos">
+                    <option {{#unless kudos }}selected{{/unless}}>Select kudos</option>
+                    {{#each categories as |category|}}
+                    <option value="{{category}}" {{#restaurantHasCategory category=category restaurant=../restaurant}} selected
+                        {{/restaurantHasCategory}} data-img-src="{{categoryLabel id=category selector='image' }}" >{{categoryLabel id=category selector='text' }}</option>
+                    {{/each}}
+                    </select>
+                </div>
+                {{!-- <div class="row ">
                     <div class="col-lg-12">
                         <ul class=" nav nav-tabs justify-content-center s-nav">
                             <li><a class="active" href="#">Timeline</a></li>
@@ -18,7 +28,7 @@
                             <li><a href="#">Videos</a></li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="row">
@@ -82,12 +92,12 @@
                 <div class="card1 social-timeline-card1">
                     <div class="card1-header">
                         <ul class="nav nav-tabs card1-header-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
+                            {{!-- <li class="nav-item">
                                 <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Share your insights</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Share Images</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <div class="card1-body">

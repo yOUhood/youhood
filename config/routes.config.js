@@ -13,6 +13,6 @@ router.get("/login", secure.isNotAuthenticated, auth.login);
 router.post("/login", secure.isNotAuthenticated, auth.doLogin);
 router.get("/logout", secure.isAuthenticated, auth.logout);
 
-router.get("/newsfeed", timeline.list)
+router.get("/", secure.isAuthenticated, timeline.list);
 
 module.exports = router;

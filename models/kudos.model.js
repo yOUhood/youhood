@@ -1,32 +1,33 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const eskudos = require("../data/eskudos.json")
-
+const eskudo = require("../data/eskudos.json");
 
 const kudosSchema = new Schema(
-    {
-        eskudos: {
-            type: [{
-                type: String,
-                required: "Please select one",
-                enum: Object.keys(eskudos)
-            }],
-            default: [],
+  {
+    eskudo: {
+      type: [
+        {
+          type: String,
+          required: "Please select one",
+          enum: Object.keys(eskudo),
         },
-        message: {
-            type: String,
-            required: "Add a message"
-        },
-        recipient: {
-            type: String,
-            required: "Who are you sending this to?"
-        },
-        sender: {
-            type: String
-        }
+      ],
+      default: [],
     },
-    { timestamps: true }
-)
+    message: {
+      type: String,
+      required: "Add a message",
+    },
+    recipient: {
+      type: String,
+      required: "Who are you sending this to?",
+    },
+    sender: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
 
-const Kudos = mongoose.model("Kudos", kudosSchema)
-module.exports = Kudos
+const Kudos = mongoose.model("Kudos", kudosSchema);
+module.exports = Kudos;

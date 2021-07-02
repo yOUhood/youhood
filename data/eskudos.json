@@ -1,22 +1,22 @@
 {
     "thankyou": {
         "text": "Thank you", 
-        "image": ""
+        "image": "/img/eskudos/thankyou.png"
     },
     "hero": {
         "text": "Hero",
-        "image": ""
+        "image": "/img/eskudos/hero.png"
     },
     "teamplayer": {
         "text": "Team Player",
-        "image": ""
+        "image": "/img/eskudos/teamplayer.png"
     },
     "achiever": {
         "text": "Achiever",
-        "image": ""
+        "image": "/img/eskudos/achiever.png"
     },
     "trusted": {
         "text": "Trusted",
-        "image": ""
+        "image": "/img/eskudos/trusted.png"
     }
 }

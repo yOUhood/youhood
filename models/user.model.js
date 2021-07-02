@@ -34,9 +34,6 @@ const userSchema = new Schema(
       type: String,
       required: "Phone is required",
     },
-    position: {
-      type: String,
-    },
     team: {
       type: String,
       required: "Select a team",
