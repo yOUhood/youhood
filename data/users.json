@@ -22,5 +22,15 @@
         "role": "explorer",
         "team": "Account Manager",
         "office": "Amsterdam"
+    },
+    {
+        "role": "explorer",
+        "team": "Technical Support",
+        "office": "Amsterdam"
+    },
+    {
+        "role": "explorer",
+        "team": "Technical Support",
+        "office": "Münich"
     }
 ]

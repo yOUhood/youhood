@@ -116,40 +116,40 @@ main h1, h2, h3, h4, h5, h6 {
     color: #ffce00;
 }
 
-ul.friend-list {
+ul.team-list {
     margin: 0;
     padding: 0;
 }
 
-ul.friend-list li {
+ul.team-list li {
     list-style-type: none;
     display: flex;
     align-items: center;
 }
 
-ul.friend-list li:hover {
+ul.team-list li:hover {
     background: rgba(0, 0, 0, .1);
     cursor: pointer;
 }
 
-ul.friend-list .left img {
+ul.team-list .left img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     margin-right: 20px;
 }
 
-ul.friend-list li {
+ul.team-list li {
     padding: 10px;
 }
 
-ul.friend-list .right h3 {
+ul.team-list .right h3 {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 0;
 }
 
-ul.friend-list .right p {
+ul.team-list .right p {
     font-size: 11px;
     color: #6c757d;
     margin: 0;
@@ -384,6 +384,19 @@ a {
     vertical-align: baseline;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-
-
 /*end social*/
+
+.eskudo-image img {
+    width: 20px;
+    height: 20px;
+}
+
+.image-checked {
+    border: 1px solid #ffce00;
+}
+
+.eskudo-input {
+    visibility: hidden;
+    position: absolute;
+    padding: ;
+}

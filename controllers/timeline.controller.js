@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
 const Kudo = require("../models/kudos.model");
 const eskudos = Object.keys(require("../data/eskudos.json"));
+const User = require("../models/user.model");
 
 module.exports.list = (req, res, next) => {
-  res.render("timeline");
-};
+  User.find({ team: req.user.team })
+    .then(teamMates => {
+        res.render("timeline", {
+            eskudos,
+            teamMates
+          });
+    })
+    .catch(err => next(error))
 
-module.exports.createKudo = (req, res, next) => {
-  res.render("timeline", {
-    eskudos,
-  });
+  
 };
 
 module.exports.doCreateKudo = (req, res, next) => {
@@ -27,3 +31,4 @@ module.exports.doCreateKudo = (req, res, next) => {
 
   kudo.save().then(() => res.redirect("/"));
 };
+
