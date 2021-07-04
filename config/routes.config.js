@@ -15,4 +15,8 @@ router.get("/logout", secure.isAuthenticated, auth.logout);
 
 router.get("/timeline", secure.isAuthenticated, timeline.list);
 
+router.get('/', (req, res) => {
+    res.redirect('/timeline');
+  });
+
 module.exports = router;

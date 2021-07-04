@@ -74,7 +74,7 @@ module.exports.doLogin = (req, res, next) => {
             renderWithLoginError();
           } else {
             req.session.userId = user.id;
-            res.redirect("/users");
+            res.redirect("/timeline");
           }
         });
       }
