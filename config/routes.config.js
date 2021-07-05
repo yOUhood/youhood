@@ -15,10 +15,11 @@ router.post("/login", secure.isNotAuthenticated, auth.doLogin);
 router.get("/logout", secure.isAuthenticated, auth.logout);
 
 router.get("/timeline", secure.isAuthenticated, timeline.list);
+router.post("/timeline", secure.isAuthenticated, timeline.doCreateKudo);
 
 router.get('/', (req, res) => {
-    res.redirect('/timeline');
-  });
+  res.redirect('/timeline');
+});
 
 module.exports = router;
 
