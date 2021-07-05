@@ -3,6 +3,7 @@ const auth = require("../controllers/auth.controller");
 const users = require("../controllers/users.controller");
 const timeline = require("../controllers/timeline.controller");
 const secure = require("../middlewares/secure.mid");
+const upload = require('../config/multer.config')
 const router = express.Router();
 
 router.get("/users", secure.isAuthenticated, users.list);
@@ -20,3 +21,6 @@ router.get('/', (req, res) => {
   });
 
 module.exports = router;
+
+
+//añadir upload.single('photo') en la ruta que queramos que se puedan subir imagenes ((profile?))
