@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(`${__dirname}/public`));
 
 app.use(logger("dev"));
+app.use(express.json())
 
 const { sessionConfig, loadUser } = require("./config/session.config");
 app.use(sessionConfig);

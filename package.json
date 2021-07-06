@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/yOUhood/youhood#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.26.2",
@@ -29,6 +30,7 @@
     "faker": "^5.5.3",
     "hbs": "^4.1.2",
     "http-errors": "^1.7.2",
+    "mdb-ui-kit": "^3.8.1",
     "mongoose": "^5.12.14",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
