@@ -19,15 +19,17 @@ const kudosSchema = new Schema(
       required: "Add a message",
     },
     recipient: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: "Who are you sending this to?",
     },
     sender: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
     },
   },
   { timestamps: true }
 );
 
-const Kudos = mongoose.model("Kudos", kudosSchema);
-module.exports = Kudos;
+const Kudo = mongoose.model("Kudo", kudosSchema);
+module.exports = Kudo;

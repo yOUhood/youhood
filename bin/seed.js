@@ -3,6 +3,7 @@ require("dotenv").config();
 const faker = require("faker");
 const mongoose = require("mongoose");
 const users = require("../data/users.json");
+const Kudo = require("../models/kudo.model");
 const User = require("../models/user.model");
 
 require("../config/db.config");
@@ -34,6 +35,26 @@ mongoose.connection.once("open", () => {
         })
       );
     })
-    .then(() => process.exit(0))
+    .then((results) => {
+      return Promise.all(
+        results.map((user, index, users) => {
+          const newKudo = {
+              eskudo: "thankyou",
+              message: "Lorem ipsum dolor y ya está",
+              recipient: index < users.length - 1 ? users[index + 1]._id : users[0]._id,
+              sender: user._id
+          }
+
+          return new Kudo(newKudo).save().then(result => {
+            console.log(result)
+          })
+          
+        })
+      )
+
+  })
+  .then(() => {
+    process.exit(0)
+  })
     .catch((error) => console.log(error));
 });

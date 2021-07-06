@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const Kudos = require("../models/kudos.model");
-const Kudo = require("../models/kudos.model");
+const Kudos = require("../models/kudo.model");
+const Kudo = require("../models/kudo.model");
 const eskudos = Object.keys(require("../data/eskudos.json"));
 const User = require("../models/user.model");
 const users = Object.keys(require("../data/users.json"))
@@ -8,10 +8,15 @@ const users = Object.keys(require("../data/users.json"))
 module.exports.list = (req, res, next) => {
   User.find({ team: req.user.team })
     .then((teamMates) => {
-      res.render("timeline", {
-        eskudos,
-        teamMates,
-      });
+      Kudo.find()
+        .then(kudos => {
+          console.log('KUDOS ENCONTRADOS', kudos)
+          res.render("timeline", {
+            eskudos,
+            teamMates,
+            kudos
+          });
+        })
     })
     .catch((err) => next(error));
 };
