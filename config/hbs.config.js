@@ -20,5 +20,5 @@ hbs.registerHelper('eskudoImage', function (options) {
 
 hbs.registerHelper('formattedDate', function (options) {
     const { date } = options.hash
-    return moment(date).startOf('hour').fromNow(); 
+    return moment(date).startOf('hour').fromNow() ; 
 })

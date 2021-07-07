@@ -11,6 +11,7 @@ module.exports.list = (req, res, next) => {
       Kudo.find()
       .populate('sender')
       .populate('recipient')
+      .sort({createdAt: 'desc'})
         .then(kudos => {
           console.log('KUDOS ENCONTRADOS', kudos)
           res.render("timeline", {
