@@ -1,6 +1,6 @@
 main {
     background-color: #c0ccd4;
-    color: black;
+    color: #484d5c;
 }
 main h1, h2, h3, h4, h5, h6 {
     color: #484d5c !important;
@@ -261,4 +261,12 @@ a {
 #recipient-id {
     position: absolute;
     visibility: hidden;
+}
+
+.card1-text{
+    color: #484d5c;  
+}
+
+.fullheader {
+    border-bottom: #484d5c;
 }

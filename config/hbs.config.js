@@ -18,6 +18,11 @@ hbs.registerHelper('eskudoImage', function (options) {
     return eskudos[eskudo].image
 })
 
+hbs.registerHelper('eskudoText', function (options) {
+    const { eskudo } = options.hash;
+    return eskudos[eskudo].text
+})
+
 hbs.registerHelper('formattedDate', function (options) {
     const { date } = options.hash
     return moment(date).startOf('hour').fromNow() ; 
