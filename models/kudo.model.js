@@ -5,14 +5,10 @@ const eskudo = require("../data/eskudos.json");
 const kudosSchema = new Schema(
   {
     eskudo: {
-      type: [
-        {
-          type: String,
-          required: "Please select one",
-          enum: Object.keys(eskudo),
-        },
-      ],
-      default: [],
+      type: String,
+      required: "Please select one",
+      enum: Object.keys(eskudo),
+      default: ""
     },
     message: {
       type: String,

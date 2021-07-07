@@ -6,11 +6,19 @@ module.exports.list = (req, res, next) => {
 };
 
 module.exports.listUsers = (req, res, next) => {
-  const { name } = req.query
+  const { name, lastName } = req.query
   const criteria = {}
-  criteria.name = new RegExp(`^${name}`, 'i')
+  if (name) {
+    criteria.name = new RegExp(`^${name}`, 'i')
+  }
+
+  if (lastName) {
+    criteria.lastName = new RegExp(`^${lastName}`, 'i')
+  }
   
+
   User.find(criteria)
+    .limit(5)
     .then((users) => {
       res.json(users);
     })

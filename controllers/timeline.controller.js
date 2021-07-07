@@ -9,6 +9,8 @@ module.exports.list = (req, res, next) => {
   User.find({ team: req.user.team })
     .then((teamMates) => {
       Kudo.find()
+      .populate('sender')
+      .populate('recipient')
         .then(kudos => {
           console.log('KUDOS ENCONTRADOS', kudos)
           res.render("timeline", {

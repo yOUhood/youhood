@@ -22,7 +22,7 @@ mongoose.connection.once("open", () => {
           const newUser = {
             role: user.role,
             email: user.email ? user.email : faker.internet.email(),
-            name: faker.name.firstName(),
+            name: user.name ? user.name : faker.name.firstName(),
             lastName: faker.name.lastName(),
             password: user.password ? user.password : faker.internet.password(),
             startDate: faker.date.past(),

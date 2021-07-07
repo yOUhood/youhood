@@ -1,5 +1,6 @@
 const hbs = require('hbs');
 const eskudos = require('../data/eskudos.json');
+const moment = require('moment')
 
 hbs.registerPartials(`${__dirname}/../views/partials`);
 
@@ -12,8 +13,12 @@ hbs.registerHelper('eskudosForKudo', function (options) {
     }
 })
 
-
 hbs.registerHelper('eskudoImage', function (options) {
     const { eskudo } = options.hash;
     return eskudos[eskudo].image
+})
+
+hbs.registerHelper('formattedDate', function (options) {
+    const { date } = options.hash
+    return moment(date).startOf('hour').fromNow(); 
 })

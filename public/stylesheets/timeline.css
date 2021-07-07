@@ -257,3 +257,8 @@ a {
     position: absolute;
     padding: 5px;
 }
+
+#recipient-id {
+    position: absolute;
+    visibility: hidden;
+}
