@@ -107,7 +107,7 @@
                             </div>
 
                             <div id="recipient" class="d-flex flex-row align-items-center mb-2">
-                                <input id="mate-search" autocomplete="off" name="recipient-name" type="text" class="form-control border-0"
+                                <input id="mate-search" name="recipient-name" type="text" class="form-control border-0"
                                     placeholder="who are you sending it to?" value="{{ kudos.recipient }}">
                             </div>
 
@@ -159,13 +159,10 @@
                         </div>
                         <div class="card1-body">
                             <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> {{formattedDate date=kudo.createdAt}}</div>
-                            {{!-- <a class="card1-link" href="#">
-                                <h5 class="card1-title">Totam non adipisci hic! Possimus ducimus amet, dolores illo
-                                    ipsum
-                                    quos
-                                    cum.</h5>
+                            <a class="card1-link" href="#">
+                                <h5 class="card1-title">{{kudo.eskudo}}</h5>
                             </a>
-                            --}} <p class="card1-text">{{kudo.message}}
+                            <p class="card1-text">{{kudo.message}}
                             </p>
                         </div>
                         <div class="card1-footer">
