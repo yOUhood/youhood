@@ -27,3 +27,8 @@ hbs.registerHelper('formattedDate', function (options) {
     const { date } = options.hash
     return moment(date).startOf('hour').fromNow() ; 
 })
+
+hbs.registerHelper('formattedStartDate', function (options) {
+    const { date } = options.hash
+    return moment(date).format('LL');
+})

@@ -137,3 +137,23 @@ margin-left: 4px;
     text-decoration: underline;
     color: #484d5c;
 }
+
+/* #search-mate-results{
+    position: relative;
+    display: inline-block;
+} */
+
+.search-result-box {
+    position: relative;
+    display: inline-block;
+    color: #484d5c;
+    background-color:#fff ;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    padding: 12px 16px;
+    display: block;
+}
+
+.search-result-box:hover {
+    background-color:#ffce00;
+}

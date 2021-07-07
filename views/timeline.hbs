@@ -27,20 +27,19 @@
             <div class="col-lg-3">
                 <div class="card1">
                     <div class="card1-body">
-                        <div class="h5 text-blue">@JaneSmith</div>
-                        <div class="h7 "><strong>Name :</strong> Jane Smith</div>
-                        <div class="h7"><strong>About :</strong> Developer of web applications, JavaScript, PHP, Java,
-                            Python, Ruby, Java, Node.js, etc.
+                        <div class="h5 text-blue">{{currentUser.email}}</div>
+                        <div class="h7 "><strong>Phone : {{currentUser.phone}}</strong> Jane Smith</div>
+                        <div class="h7"><strong>At this company since : {{currentUser.startDate}}</strong>
                         </div>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <div class="h6 text-muted">Followers</div>
-                            <div class="h5">5.2342</div>
+                            <div class="h6 text-muted">At this company since</div>
+                            <div class="h5">{{formattedStartDate date=currentUser.startDate}}</div>
                         </li>
                         <li class="list-group-item">
-                            <div class="h6 text-muted">Following</div>
-                            <div class="h5">6758</div>
+                            <div class="h6 text-muted">Phone</div>
+                            <div class="h5">{{currentUser.phone}}</div>
                         </li>
                         <li class="list-group-item">
                             <div class="h6 text-muted">Themes</div>
@@ -88,7 +87,7 @@
 
             <div class="col-lg-6 gedf-main">
                 <!--- \\\\\\\Post-->
-                <form action="/timeline" method="POST" autocomplete="new-password">
+                <form action="/timeline" method="POST" autocomplete="off">
                     <div class="card1 social-timeline-card1">
                         <div class="card1-header">
                             <ul class="nav nav-tabs card1-header-tabs" id="myTab" role="tablist">
