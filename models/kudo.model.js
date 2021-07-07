@@ -23,6 +23,9 @@ const kudosSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
     },
+    photokudo: {
+      type: String,
+    }
   },
   { timestamps: true }
 );

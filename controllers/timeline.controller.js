@@ -21,6 +21,7 @@ module.exports.list = (req, res, next) => {
           });
         })
     })
+
     .catch((err) => next(error));
 };
 
@@ -39,5 +40,10 @@ module.exports.doCreateKudo = (req, res, next) => {
     photo: req.user.photo
   });
 
+  if (req.file) {
+    photokudo = req.file.path;
+  };
+
   kudo.save().then(() => res.redirect("/timeline"));
+
 };
