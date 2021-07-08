@@ -17,7 +17,7 @@ const kudosSchema = new Schema(
     recipient: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: "Who are you sending this to?",
+      required: "Please select a user to send it to",
     },
     sender: {
       type: mongoose.Schema.Types.ObjectId,

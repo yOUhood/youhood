@@ -40,7 +40,6 @@ module.exports.doRegister = (req, res, next) => {
       }
     })
     .catch((error) => {
-      console.log(error);
       if (error instanceof mongoose.Error.ValidationError) {
         renderWithErrors(error.errors);
       } else {
@@ -66,7 +65,6 @@ module.exports.doLogin = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
-        console.log('entro !user')
         renderWithLoginError();
       } else {
         return user.checkPassword(req.body.password).then((match) => {

@@ -32,7 +32,7 @@ const userSchema = new Schema(
     },
     phone: {
       type: String,
-      required: "Phone is required",
+      required: "Add a phone number",
     },
     team: {
       type: String,

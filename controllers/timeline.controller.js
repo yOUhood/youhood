@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Kudos = require("../models/kudo.model");
 const Kudo = require("../models/kudo.model");
 const eskudos = Object.keys(require("../data/eskudos.json"));
 const User = require("../models/user.model");
@@ -9,11 +8,10 @@ module.exports.list = (req, res, next) => {
   User.find({ team: req.user.team })
     .then((teamMates) => {
       Kudo.find()
-      .populate('sender')
-      .populate('recipient')
-      .sort({createdAt: 'desc'})
+        .populate('sender')
+        .populate('recipient')
+        .sort({ createdAt: 'desc' })
         .then(kudos => {
-          console.log('KUDOS ENCONTRADOS', kudos)
           res.render("timeline", {
             eskudos,
             teamMates,
@@ -21,7 +19,6 @@ module.exports.list = (req, res, next) => {
           });
         })
     })
-
     .catch((err) => next(error));
 };
 
@@ -31,19 +28,27 @@ module.exports.doCreateKudo = (req, res, next) => {
   if (userKudos && !Array.isArray(userKudos)) {
     userKudos = [userKudos];
   }
+  if (req.file) {
+    kudo.photokudo = req.file.path;
+  };
 
   const kudo = new Kudo({
     eskudo: req.body.eskudo,
     message: req.body.message,
     recipient: req.body.recipient,
     sender: req.user.id,
-    photo: req.user.photo
+    photokudo: req.body.photokudo,
   });
 
-  if (req.file) {
-    photokudo = req.file.path;
-  };
-
-  kudo.save().then(() => res.redirect("/timeline"));
-
+  kudo.save()
+    .then(() => res.redirect("/timeline"))
+    .catch((error) => {
+      if (error instanceof mongoose.Error.ValidationError) {
+        res.status(400).render('timeline'), {
+          error,
+        }
+      } else {
+        next(error);
+      }
+    })
 };

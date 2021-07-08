@@ -97,19 +97,21 @@
                             <div class="container d-flex align-items-center justify-content-around">
                                 {{#each eskudos as |eskudo|}}
                                 <div class="eskudo-container">
-                                    <input class="eskudo-input" name="eskudo" value="{{eskudo}}" type="checkbox" />
+                                    <input class="eskudo-input" name="eskudo" value="{{ kudo.eskudo }}" type="checkbox" />
                                     <div class="eskudo-image">
-                                        <img src="{{eskudoImage eskudo=eskudo}}" />
+                                        <img src="{{ eskudoImage eskudo=eskudo }}" />
                                     </div>
                                 </div>
                                 {{/each}}
                             </div>
 
                             <div id="recipient" class="d-flex flex-row align-items-center mb-2">
-                                <input id="mate-search" name="recipient-name" type="text" class="form-control border-0"
-                                    placeholder="who are you sending it to?" value="{{ kudos.recipient }}">
+                                <input id="mate-search" name="recipient" type="text" class="form-control border-0 {{#if error.recipient}}is-invalid{{/if}}"
+                                    placeholder="who are you sending it to?" value="{{ kudo.recipient }}">
+                                          {{#if error.recipient}}<div class="invalid-feedback">{{error.recipient}}</div>{{/if}}
+
                             </div>
-                            <input id="recipient-id" type="text" value="" name="recipient"/>
+                            <input id="recipient-id" type="text" value="" name="recipient-id"/>
                             <div id="search-mate-results">
                             </div>
 
@@ -118,11 +120,11 @@
                                     aria-labelledby="posts-tab">
                                     <div class="form-group">
                                         <label class="sr-only" for="message">post</label>
-                                        <textarea name="message" type="text" class="form-control html-editor"
+                                        <textarea name="message" type="text" class="form-control html-editor" vale="{{ kudo.message }}"
                                             id="message" rows="3" placeholder="What are you thinking?"></textarea>
                                     </div>
                                     <div class="input-group mb-3">
-                                        <input type="file" name="photokudo"
+                                        <input type="file" name="photokudo" value="{{kudo.photokudo }}"
                                         class="custom-form-control form-control border-0 py-2 ps-4">
                                     </div>
                                 </div>
