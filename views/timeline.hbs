@@ -29,7 +29,7 @@
                     <div class="card1-body">
                         <div class="h5 text-blue">{{currentUser.email}}</div>
                     </div>
-                    
+
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="h6 text-muted">At this company since</div>
@@ -43,8 +43,8 @@
                             <div class="h6 text-muted">Location</div>
                             <div class="h5">{{currentUser.office}}</div>
                             <div class="">
-                                    <img src="img/illustrations/map.png"  class="d-block w-100" alt="...">
-                                </div>
+                                <img src="img/illustrations/map.png" class="d-block w-100" alt="...">
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -59,15 +59,14 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item">
-                                    <img src={{currentUser.photo}}  class="d-block w-100" alt="...">
+                                    <img src={{currentUser.photo}} class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block w-100"
                                         alt="...">
                                 </div>
                                 <div class="carousel-item active">
-                                    <img src={{currentUser.photo}}  class="d-block w-100"
-                                        alt="...">
+                                    <img src={{currentUser.photo}} class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
@@ -87,7 +86,7 @@
 
             <div class="col-lg-6 gedf-main">
                 <!--- \\\\\\\Post-->
-                <form action="/timeline" method="POST" autocomplete="off">
+                <form action="/timeline" method="POST" autocomplete="off" enctype="multipart/form-data">
                     <div class="card1 social-timeline-card1">
                         <div class="card1-header">
                             <ul class="nav nav-tabs card1-header-tabs" id="myTab" role="tablist">
@@ -97,25 +96,31 @@
                             <div class="container d-flex justify-content-around">
                                 {{#each eskudos as |eskudo|}}
                                 <div class="eskudo-container">
-                                    <input class="eskudo-input{{#if errors.eskudo}}is-invalid{{/if}}" name="eskudo" value="{{ eskudo }}" type="checkbox" />
-                                    {{#if errors.eskudo}}<div class="invalid-feedback">{{errors.eskudo.message}}</div>{{/if}}
-
+                                    <input class="eskudo-input {{#if errors.eskudo }}is-invalid{{/if}}" name="eskudo"
+                                        value="{{ eskudo }}" type="checkbox" />
                                     <div class="eskudo-image">
                                         <img src="{{ eskudoImage eskudo=eskudo }}" />
-                                    </div>
+                                       
+                                        
 
+                                    </div>
                                     <div class="hide">{{ eskudoText eskudo=eskudo }}</div>
+                                    
                                 </div>
                                 {{/each}}
+                                
                             </div>
-
+                            {{#if errors.eskudo}}<div class="invalid-feedback">{{errors.eskudo.message}}</div>{{/if}}
                             <div id="recipient" class="d-flex flex-row align-items-center mb-2 mt-2">
-                                <input id="mate-search" name="recipient" type="text" class="form-control border-0 {{#if errors.recipient}}is-invalid{{/if}}"
+                                <input id="mate-search" name="recipient" type="text"
+                                    class="form-control border-0 {{#if errors.recipient}}is-invalid{{/if}}"
                                     placeholder="who are you sending it to?" value="{{ kudo.recipient }}">
 
                             </div>
-                            <input class="" id="recipient-id" type="text" value="{{ kudo.recipient }}" name="recipient_id"/>
-                            {{#if errors.recipient}}<div class="invalid-feedback">{{errors.recipient.message}}</div>{{/if}}
+                            
+                            <input class="{{#if errors.recipient}}is-invalid{{/if}}" id="recipient-id" type="text" name="recipientId" />
+                                   {{#if errors.recipient}}<div class="invalid-feedback">{{errors.recipient.message}}</div>
+                            {{/if}}
                             <div id="search-mate-results">
                             </div>
 
@@ -124,14 +129,17 @@
                                     aria-labelledby="posts-tab">
                                     <div class="form-group">
                                         <label class="sr-only" for="message">post</label>
-                                        <textarea name="message" type="text" class="{{#if errors.message}}is-invalid{{/if}} form-control html-editor" value="{{ kudo.message }}"
-                                            id="message" rows="3" placeholder="What are you thinking?"></textarea>
-                                            {{#if errors.message}}<div class="invalid-feedback">{{errors.message.message}}</div>{{/if}}
+                                        <textarea name="message" type="text"
+                                            class="{{#if errors.message}}is-invalid{{/if}} form-control html-editor"
+                                            value="{{ kudo.message }}" id="message" rows="3"
+                                            placeholder="What are you thinking?"></textarea>
+                                        {{#if errors.message}}<div class="invalid-feedback">{{errors.message.message}}
+                                        </div>{{/if}}
                                     </div>
-                                      
+
                                     <div class="input-group mb-3">
                                         <input type="file" name="photokudo" value="{{kudo.photokudo }}"
-                                        class="custom-form-control form-control border-0 py-2 ps-4">
+                                            class="custom-form-control form-control border-0 py-2 ps-4">
                                     </div>
                                 </div>
                             </div>
@@ -155,9 +163,13 @@
                                     <img class="rounded-circle" width="55" src="{{kudo.recipient.photo}}" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0 text-blue">{{kudo.recipient.name}} {{kudo.recipient.lastName}}</div>
+                                    <div class="h5 m-0 text-blue">{{kudo.recipient.name}} {{kudo.recipient.lastName}}
+                                    </div>
                                     <div class="h7 text-muted">from: {{kudo.sender.name}} {{kudo.sender.lastName}}</div>
                                 </div>
+                            </div>
+                            <div>
+                                <img  width="55" src="{{kudo.photokudo}}"/>
                             </div>
                             <div>
                                 <div class="dropdown">
@@ -166,7 +178,8 @@
                             </div>
                         </div>
                         <div class="card1-body">
-                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> {{formattedDate date=kudo.createdAt}}</div>
+                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> {{formattedDate
+                                date=kudo.createdAt}}</div>
                             <a class="card1-link" href="#">
                                 <h5 class="card1-title">{{eskudoText eskudo=kudo.eskudo}}</h5>
                             </a>

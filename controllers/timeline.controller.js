@@ -28,15 +28,18 @@ module.exports.doCreateKudo = (req, res, next) => {
   if (userKudos && !Array.isArray(userKudos)) {
     userKudos = [userKudos];
   }
-  // if (req.file) {
-  //   kudo.photokudo = req.file.path;
-  // };
+ console.log(req.body)
   
   const kudo = new Kudo({
     eskudo: req.body.eskudo,
     message: req.body.message,
-    recipient: req.body.recipient_id,
-    sender: req.user.id,  });
+    recipient: req.body.recipientId ? req.body.recipientId : null,
+    sender: req.user.id
+  });
+
+  if (req.file) {
+    kudo.photokudo = req.file.path;
+  };
 
   kudo.save()
     .then((kudoCreated) =>{
@@ -54,6 +57,7 @@ module.exports.doCreateKudo = (req, res, next) => {
             .populate('recipient')
             .sort({ createdAt: 'desc' })
             .then(kudos => {
+              console.log('errores', error.errors)
               res.render("timeline", {
                 eskudos,
                 teamMates,

@@ -62,6 +62,10 @@ footer{
 .form-control.is-invalid{
     border-color: #ff8552;
     background-image: none;
+    border: none; 
+}
+.form-select.is-invalid{
+    border:none;
 }
 
 .invalid-feedback {

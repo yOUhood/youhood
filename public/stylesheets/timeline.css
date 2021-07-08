@@ -248,7 +248,7 @@ a {
 
 .hide {
     visibility: hidden;
-    height: 40px
+    height: 20px
 }
 
 .eskudo-image:hover + .hide {
@@ -280,3 +280,7 @@ a {
 .fullheader {
     border-bottom: #484d5c;
 }
+
+.invalid-feedback-custom{
+    color: red;
+} 
