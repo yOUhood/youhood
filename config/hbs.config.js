@@ -25,7 +25,9 @@ hbs.registerHelper('eskudoText', function (options) {
 
 hbs.registerHelper('formattedDate', function (options) {
     const { date } = options.hash
-    return moment(date).startOf('hour').fromNow() ; 
+    let newDate = moment(date)
+    newDate.utcOffset('+02:00')
+    return newDate.format("YYYY DD MM HH:mm")
 })
 
 hbs.registerHelper('formattedStartDate', function (options) {

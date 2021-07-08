@@ -241,9 +241,19 @@ a {
 /*end social*/
 
 .eskudo-image img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin: 10px;
+}
+
+.hide {
+    visibility: hidden;
+    height: 40px
+}
+
+.eskudo-image:hover + .hide {
+    visibility: inherit;
+    color: #484d5c;
 }
 
 .image-checked {
@@ -253,7 +263,7 @@ a {
 }
 
 .eskudo-input {
-    visibility: hidden;
+   visibility: hidden;
     position: absolute;
     padding: 5px;
 }

@@ -28,25 +28,40 @@ module.exports.doCreateKudo = (req, res, next) => {
   if (userKudos && !Array.isArray(userKudos)) {
     userKudos = [userKudos];
   }
-  if (req.file) {
-    kudo.photokudo = req.file.path;
-  };
-
+  // if (req.file) {
+  //   kudo.photokudo = req.file.path;
+  // };
+  
   const kudo = new Kudo({
     eskudo: req.body.eskudo,
     message: req.body.message,
-    recipient: req.body.recipient,
-    sender: req.user.id,
-    photokudo: req.body.photokudo,
-  });
+    recipient: req.body.recipient_id,
+    sender: req.user.id,  });
 
   kudo.save()
-    .then(() => res.redirect("/timeline"))
+    .then((kudoCreated) =>{
+      console.log(kudoCreated)
+       res.redirect("/timeline")
+      })
     .catch((error) => {
+      console.log(error.errors)
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(400).render('timeline'), {
-          error,
-        }
+        
+        User.find({ team: req.user.team })
+        .then((teamMates) => {
+          Kudo.find()
+            .populate('sender')
+            .populate('recipient')
+            .sort({ createdAt: 'desc' })
+            .then(kudos => {
+              res.render("timeline", {
+                eskudos,
+                teamMates,
+                kudos,
+                errors: error.errors
+              });
+            })
+        })
       } else {
         next(error);
       }

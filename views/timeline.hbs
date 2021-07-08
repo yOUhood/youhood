@@ -94,24 +94,28 @@
                             </ul>
                         </div>
                         <div class="card1-body kudo-form">
-                            <div class="container d-flex align-items-center justify-content-around">
+                            <div class="container d-flex justify-content-around">
                                 {{#each eskudos as |eskudo|}}
                                 <div class="eskudo-container">
-                                    <input class="eskudo-input" name="eskudo" value="{{ kudo.eskudo }}" type="checkbox" />
+                                    <input class="eskudo-input{{#if errors.eskudo}}is-invalid{{/if}}" name="eskudo" value="{{ eskudo }}" type="checkbox" />
+                                    {{#if errors.eskudo}}<div class="invalid-feedback">{{errors.eskudo.message}}</div>{{/if}}
+
                                     <div class="eskudo-image">
                                         <img src="{{ eskudoImage eskudo=eskudo }}" />
                                     </div>
+
+                                    <div class="hide">{{ eskudoText eskudo=eskudo }}</div>
                                 </div>
                                 {{/each}}
                             </div>
 
-                            <div id="recipient" class="d-flex flex-row align-items-center mb-2">
-                                <input id="mate-search" name="recipient" type="text" class="form-control border-0 {{#if error.recipient}}is-invalid{{/if}}"
+                            <div id="recipient" class="d-flex flex-row align-items-center mb-2 mt-2">
+                                <input id="mate-search" name="recipient" type="text" class="form-control border-0 {{#if errors.recipient}}is-invalid{{/if}}"
                                     placeholder="who are you sending it to?" value="{{ kudo.recipient }}">
-                                          {{#if error.recipient}}<div class="invalid-feedback">{{error.recipient}}</div>{{/if}}
 
                             </div>
-                            <input id="recipient-id" type="text" value="" name="recipient-id"/>
+                            <input class="" id="recipient-id" type="text" value="{{ kudo.recipient }}" name="recipient_id"/>
+                            {{#if errors.recipient}}<div class="invalid-feedback">{{errors.recipient.message}}</div>{{/if}}
                             <div id="search-mate-results">
                             </div>
 
@@ -120,9 +124,11 @@
                                     aria-labelledby="posts-tab">
                                     <div class="form-group">
                                         <label class="sr-only" for="message">post</label>
-                                        <textarea name="message" type="text" class="form-control html-editor" vale="{{ kudo.message }}"
+                                        <textarea name="message" type="text" class="{{#if errors.message}}is-invalid{{/if}} form-control html-editor" value="{{ kudo.message }}"
                                             id="message" rows="3" placeholder="What are you thinking?"></textarea>
+                                            {{#if errors.message}}<div class="invalid-feedback">{{errors.message.message}}</div>{{/if}}
                                     </div>
+                                      
                                     <div class="input-group mb-3">
                                         <input type="file" name="photokudo" value="{{kudo.photokudo }}"
                                         class="custom-form-control form-control border-0 py-2 ps-4">
