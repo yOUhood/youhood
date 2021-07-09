@@ -12,6 +12,7 @@ module.exports.register = (req, res, next) => {
 };
 
 module.exports.doRegister = (req, res, next) => {
+  console.log(req.body)
   function renderWithErrors(errors) {
     res.render("auth/register", {
       user: req.body,
@@ -26,7 +27,7 @@ module.exports.doRegister = (req, res, next) => {
       if (user) {
         renderWithErrors({ email: "email already registered." });
       } else {
-        user = { name, lastName, email, phone, team, office, admin } =
+        user = { name, lastName, email, phone, team, office, role } =
           req.body;
 
         const password = Math.random().toString(36).slice(-8);
