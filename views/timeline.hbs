@@ -1,7 +1,7 @@
 <main>
     <div class="container">
         <div class="img"
-            style="    background-image: url(img/illustrations/starts.png);height: 350px;background-size:cover;">
+            style="    background-image: url(img/illustrations/monito.jpg );height: 350px;background-size:cover;">
         </div>
         <div class="card1 social-prof">
             <div class="card1-body">
@@ -10,17 +10,6 @@
                     <h3>{{currentUser.name}} {{currentUser.lastName}}</h3>
                     <p>{{currentUser.team}}</p>
                 </div>
-                {{!-- <div class="row ">
-                    <div class="col-lg-12">
-                        <ul class=" nav nav-tabs justify-content-center s-nav">
-                            <li><a class="active" href="#">Timeline</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Friends</a></li>
-                            <li><a href="#">Photos</a></li>
-                            <li><a href="#">Videos</a></li>
-                        </ul>
-                    </div>
-                </div> --}}
             </div>
         </div>
         <div class="row">
@@ -61,10 +50,6 @@
                                 <div class="carousel-item">
                                     <img src={{currentUser.photo}} class="d-block w-100" alt="...">
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block w-100"
-                                        alt="...">
-                                </div>
                                 <div class="carousel-item active">
                                     <img src={{currentUser.photo}} class="d-block w-100" alt="...">
                                 </div>
@@ -100,15 +85,15 @@
                                         value="{{ eskudo }}" type="checkbox" />
                                     <div class="eskudo-image">
                                         <img src="{{ eskudoImage eskudo=eskudo }}" />
-                                       
-                                        
+
+
 
                                     </div>
                                     <div class="hide">{{ eskudoText eskudo=eskudo }}</div>
-                                    
+
                                 </div>
                                 {{/each}}
-                                
+
                             </div>
                             {{#if errors.eskudo}}<div class="invalid-feedback">{{errors.eskudo.message}}</div>{{/if}}
                             <div id="recipient" class="d-flex flex-row align-items-center mb-2 mt-2">
@@ -117,9 +102,10 @@
                                     placeholder="who are you sending it to?" value="{{ kudo.recipient }}">
 
                             </div>
-                            
-                            <input class="{{#if errors.recipient}}is-invalid{{/if}}" id="recipient-id" type="text" name="recipientId" />
-                                   {{#if errors.recipient}}<div class="invalid-feedback">{{errors.recipient.message}}</div>
+
+                            <input class="{{#if errors.recipient}}is-invalid{{/if}}" id="recipient-id" type="text"
+                                name="recipientId" />
+                            {{#if errors.recipient}}<div class="invalid-feedback">{{errors.recipient.message}}</div>
                             {{/if}}
                             <div id="search-mate-results">
                             </div>
@@ -139,7 +125,7 @@
 
                                     <div class="input-group mb-3">
                                         <input type="file" name="photokudo" value="{{kudo.photokudo }}"
-                                            class="custom-form-control form-control border-0 py-2 ps-4">
+                                            class="custom-form-control form-control">
                                     </div>
                                 </div>
                             </div>
@@ -168,25 +154,31 @@
                                     <div class="h7 text-muted">from: {{kudo.sender.name}} {{kudo.sender.lastName}}</div>
                                 </div>
                             </div>
-                            <div>
-                                <img  width="55" src="{{kudo.photokudo}}"/>
-                            </div>
-                            <div>
-                                <div class="dropdown">
-                                    <img class="rounded" width="40" src="{{eskudoImage eskudo=kudo.eskudo}}" alt="">
-                                </div>
+
+                            <div class="dropdown">
+                                <img class="rounded" width="40" src="{{eskudoImage eskudo=kudo.eskudo}}" alt="">
                             </div>
                         </div>
-                        <div class="card1-body">
-                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> {{formattedDate
-                                date=kudo.createdAt}}</div>
-                            <a class="card1-link" href="#">
-                                <h5 class="card1-title">{{eskudoText eskudo=kudo.eskudo}}</h5>
-                            </a>
-                            <p class="card1-text">{{kudo.message}}
-                            </p>
-                        </div>
+                    </div>
+                    <div class="card1-body">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> {{formattedDate
+                            date=kudo.createdAt}}</div>
+                        <a class="card1-link" href="#">
+                            <h5 class="card1-title">{{eskudoText eskudo=kudo.eskudo}}</h5>
+                        </a>
+                        <p class="card1-text">{{kudo.message}}
+                        </p>
+                    </div>
+ 
+                    <div>
                         <div class="card1-footer">
+                            <div class="photoKudoUploaded">
+                        <img class="photoUploaded" width="100" src="{{ kudo.photokudo }}" />
+                        <div class="myModal modal">
+                            <span class="close">&times;</span>
+                            <img class="modal-content imageUploaded" src="{{ kudo.photokudo }}">
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>

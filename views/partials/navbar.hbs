@@ -1,19 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="/">yOUhood</a>
+    {{!-- <a class="navbar-brand" href="/">yOUhood</a> --}}
+    <img src="/img/logo-crop.png" alt="Logo" style="width:130px;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar"
       aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {{#if currentUser }}
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/register">Register</a></li>
-        {{!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="/timeline">Timeline</a></li>
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/timeline">{{currentUser.name}}
-            {{currentUser.lastName}}</a></li> --}}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
       </ul>
       <ul class="navbar-nav pull-right">
+        {{#if currentUser }}
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/register">Register</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/logout"><strong>Logout</strong></a></li>
         {{else}}
         <li class="nav-item"><a class="nav-link {{active path=path match='/login'}}" href="/login">Login</a></li>

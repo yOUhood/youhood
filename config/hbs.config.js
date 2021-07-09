@@ -27,10 +27,10 @@ hbs.registerHelper('formattedDate', function (options) {
     const { date } = options.hash
     let newDate = moment(date)
     newDate.utcOffset('+02:00')
-    return newDate.format("YYYY DD MM HH:mm")
+    return newDate.format("DD-MM-YYYY HH:mm")
 })
 
 hbs.registerHelper('formattedStartDate', function (options) {
     const { date } = options.hash
-    return moment(date).format('LL');
+    return moment(date).format('DD MMMM, YYYY');
 })

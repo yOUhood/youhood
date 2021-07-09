@@ -23,5 +23,3 @@ router.get("/", (req, res) => {
 });
 
 module.exports = router;
-
-//añadir upload.single('photo') en la ruta que queramos que se puedan subir imagenes ((profile?))

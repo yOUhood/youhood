@@ -40,7 +40,7 @@ mongoose.connection.once("open", () => {
         results.map((user, index, users) => {
           const newKudo = {
               eskudo: "thankyou",
-              message: "Lorem ipsum dolor y ya está",
+              message: faker.lorem.paragraph(),
               recipient: index < users.length - 1 ? users[index + 1]._id : users[0]._id,
               sender: user._id
           }
