@@ -19,7 +19,7 @@
                         <div class="h5 text-blue">{{currentUser.email}}</div>
                     </div>
 
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group">
                         <li class="list-group-item">
                             <div class="h6 text-muted">At this company since</div>
                             <div class="h5">{{formattedStartDate date=currentUser.startDate}}</div>
@@ -169,20 +169,20 @@
                         <p class="card1-text">{{kudo.message}}
                         </p>
                     </div>
- 
+
                     <div>
                         <div class="card1-footer">
                             <div class="photoKudoUploaded">
-                        <img class="photoUploaded" width="100" src="{{ kudo.photokudo }}" />
-                        <div class="myModal modal">
-                            <span class="close">&times;</span>
-                            <img class="modal-content imageUploaded" src="{{ kudo.photokudo }}">
-                        </div>
-                    </div>
+                                <img class="photoUploaded" width="100" src="{{ kudo.photokudo }}" />
+                            </div>
                         </div>
                     </div>
                 </div>
                 {{/each}}
+                <div class="myModal modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content imageUploaded">
+                </div>
                 <!-- Post /////-->
             </div>
 
@@ -196,16 +196,45 @@
                                 <div class="left">
                                     <img src={{teamMate.photo}} alt="">
                                 </div>
-                                <div class="right">
+                                <div class="right teamMateDiv" 
+                                    data-name="{{teamMate.name}} {{teamMate.lastName}}"
+                                    data-photo="{{teamMate.photo}}"
+                                    data-email="Email: {{teamMate.email}}"
+                                    data-phone="phone: {{teamMate.phone}}"
+                                    data-office="office: {{teamMate.office}}"
+                                >
                                     <h3>{{teamMate.name}} {{teamMate.lastName}}</h3>
                                     <p>{{teamMate.office}}</p>
                                 </div>
                             </li>
                             {{/each}}
-                        </ul>
+                            <div class="myModal2 modal">
+                                <div class="modal-content modalcard">
+                                    <span class="close">&times;</span>
+                                    <div class="card">
+                                        <div class="row content">
+                                            <div class="col-md-4">
+                                                <img src="" class="img-fluid rounded-start modalPhoto" alt="teamMatePhoto">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"></h5>
+                                                    <h5 class="card-title teamMateName"></h5>
+                                                    <p class="card-text teamMateEmail"></p>
+                                                    <p class="card-text teamMatePhone"></p>
+                                                    <p class="card-text teamMateOffice"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
+
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </main>

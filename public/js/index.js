@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   const searchResultDiv = document.querySelector("#search-mate-results")
   const searchInput = document.querySelector("#mate-search");
   const recipientIdInput = document.querySelector("#recipient-id")
-  
+
   eskudoImages.forEach((eskudo) => {
     const input = eskudo.previousElementSibling;
     eskudo.addEventListener("click", () => {
@@ -31,29 +31,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (searchInput) {
     searchInput.addEventListener("focus", (event) => {
       const inputValue = event.target.value.split(' ')
-  
+
       if (event.target.value === "") {
         searchResultDiv.innerHTML = ''
       } else {
         axios
-        .get(`http://localhost:3000/users/list?name=${inputValue[0]}&lastName=${inputValue.length > 1 ? inputValue[1] : ''}`, {
-          method: "get",
-          withCredentials: true,
-        })
-        .then((res) => {
-          searchResultDiv.innerHTML = ''
-          res.data.forEach(user => {
-            searchResultDiv.appendChild(createMateBox(user))
+          .get(`http://localhost:3000/users/list?name=${inputValue[0]}&lastName=${inputValue.length > 1 ? inputValue[1] : ''}`, {
+            method: "get",
+            withCredentials: true,
           })
-        })
-        .catch((err) => console.log(err));
-      } 
-    
+          .then((res) => {
+            searchResultDiv.innerHTML = ''
+            res.data.forEach(user => {
+              searchResultDiv.appendChild(createMateBox(user))
+            })
+          })
+          .catch((err) => console.log(err));
+      }
+
     });
   }
 
-  const createMateBox = (user) =>  {
-    
+  const createMateBox = (user) => {
+
     let divName = document.createElement('div')
     divName.classList.add("search-result-box")
     divName.appendChild(document.createTextNode(`${user.name} ${user.lastName}`))
@@ -67,42 +67,75 @@ document.addEventListener("DOMContentLoaded", function (event) {
   if (searchInput) {
     searchInput.addEventListener("keyup", (event) => {
       const inputValue = event.target.value.split(' ')
-  
+
       if (event.target.value === "") {
         searchResultDiv.innerHTML = ''
       } else {
         axios
-        .get(`http://localhost:3000/users/list?name=${inputValue[0]}&lastName=${inputValue.length > 1 ? inputValue[1] : ''}`, {
-          method: "get",
-          withCredentials: true,
-        })
-        .then((res) => {
-          searchResultDiv.innerHTML = ''
-          res.data.forEach(user => {
-            searchResultDiv.appendChild(createMateBox(user))
+          .get(`http://localhost:3000/users/list?name=${inputValue[0]}&lastName=${inputValue.length > 1 ? inputValue[1] : ''}`, {
+            method: "get",
+            withCredentials: true,
           })
-        })
-        .catch((err) => console.log(err));
-      } 
-    
+          .then((res) => {
+            searchResultDiv.innerHTML = ''
+            res.data.forEach(user => {
+              searchResultDiv.appendChild(createMateBox(user))
+            })
+          })
+          .catch((err) => console.log(err));
+      }
+
     });
   }
 
   // Get the modal
-const modal = document.querySelector(".myModal");
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-const img = document.querySelector(".photoUploaded");
-const modalImg = document.querySelector(".imageUploaded");
-img.onclick = function(){
-  modal.style.display = "block";
-  // modalImg.src = this.src;
-}
+  const modal = document.querySelector(".myModal");
+  const modalImg = document.querySelector(".imageUploaded");
 
-// Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close")[0];
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  const images = document.querySelectorAll(".photoUploaded");
+  images.forEach(img => {
+    img.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+    }
+  })
+  // Get the <span> element that closes the modal
+  const spanClose = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+  // When the user clicks on <span> (x), close the modal
+  spanClose.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  const modal2 = document.querySelector(".myModal2");
+  const modalcard = document.querySelector(".modalcard");
+  const teamMateDivs = document.querySelectorAll(".teamMateDiv");
+
+  const modal2photo = document.querySelector(".modalPhoto")
+  const modal2Name = document.querySelector(".teamMateName")
+  const modal2Email = document.querySelector(".teamMateEmail")
+  const modal2Phone = document.querySelector(".teamMatePhone")
+  const modal2Office = document.querySelector(".teamMateOffice")
+  const modal2StartDate = document.querySelector(".teamMateStartDate")
+
+  teamMateDivs.forEach(div => {
+    console.log(div.dataset)
+    div.onclick = function () {
+      modal2.style.display = "block";
+      modal2photo.src = div.dataset.photo;
+      modal2Name.innerText = div.dataset.name;
+      modal2Email.innerText = div.dataset.email.toLowerCase();
+      modal2Phone.innerText = div.dataset.phone;
+      modal2Office.innerText = div.dataset.office;
+    }
+  })
+  const spanClose2 = document.getElementsByClassName("close")[1];
+
+  spanClose2.onclick = function () {
+    modal2.style.display = "none";
+  }
 });
+
+
+

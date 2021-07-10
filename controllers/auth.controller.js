@@ -72,6 +72,7 @@ module.exports.doLogin = (req, res, next) => {
           if (!match) {
             renderWithLoginError();
           } else {
+            console.log('tutto benne')
             req.session.userId = user.id;
             res.redirect("/timeline");
           }

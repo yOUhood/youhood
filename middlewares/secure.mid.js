@@ -13,7 +13,7 @@ module.exports.isNotAuthenticated = (req, res, next) => {
   if (!req.user) {
     next()
   } else {
-    res.redirect("/users");
+    res.redirect("/timeline");
   }
 };
 

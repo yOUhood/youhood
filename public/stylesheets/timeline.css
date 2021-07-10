@@ -5,14 +5,6 @@ main {
 main h1, h2, h3, h4, h5, h6 {
     color: #484d5c !important;
 }
-/*social */
-/* .card1-one {
-    position: relative;
-    width: 300px;
-    background: #c0ccd4;
-    box-shadow: 0 10px 7px -5px rgba(0, 0, 0, 0.4);
-    padding: 10px
-} */
 .card1 {
     margin-bottom: 35px;
     box-shadow: 0 10px 20px 0 rgba(26, 44, 57, 0.14);
