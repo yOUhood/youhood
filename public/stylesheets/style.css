@@ -164,3 +164,9 @@ margin-left: 4px;
 .login-container {
     height: calc(100vh - 120px)
 }
+
+.currentUserList-item {
+    list-style-type: none;
+    margin-bottom: 15px;
+    padding-bottom: 3px;
+}
