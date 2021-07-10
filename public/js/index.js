@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         searchResultDiv.innerHTML = ''
       } else {
         axios
-          .get(`http://localhost:3000/users/list?name=${inputValue[0]}&lastName=${inputValue.length > 1 ? inputValue[1] : ''}`, {
+          .get(`https://youhood.herokuapp.com/users/list?name=${inputValue[0]}&lastName=${inputValue.length > 1 ? inputValue[1] : ''}`, {
             method: "get",
             withCredentials: true,
           })
